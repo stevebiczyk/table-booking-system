@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hungarian Restaurant - Table Booking</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>My Hungarian Restaurant</h1>
+        <img src="static/img/logo.png" alt="Restaurant Logo">
+    </header>
+
+    <main>
+        <section>
+            <h2>Book Your Table</h2>
+            <form action="/booking/submit" method="post">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="guests">Number of Guests:</label>
+                <input type="number" id="guests" name="guests" min="1" required>
+
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="notes">Special Requests (optional):</label>
+                <textarea id="notes" name="notes"></textarea>
+
+                <input type="submit" value="Book Now">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 My Hungarian Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
