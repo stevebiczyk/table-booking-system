@@ -10,6 +10,14 @@ class Table(models.Model):
         return f"Table {self.table_number}"
 
 
+class Staff(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} - {self.role}"
+
+
 class Customer(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
