@@ -29,9 +29,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['table-booking-system-sb.herokuapp.com', 'localhost',
+                 '*']
 
-ALLOWED_HOSTS = ['table-booking-system-sb.herokuapp.com', 'localhost']
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-stevebiczyk-tablebookin-jcvyspcnkd6.ws-eu93.gitpod.io/*']
 
 # Application definition
 
@@ -89,8 +91,8 @@ WSGI_APPLICATION = 'tablebooking.wsgi.application'
 # }
 
 DATABASES = {
-     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
- }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 
 # Password validation
