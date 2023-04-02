@@ -1,10 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
+
+STATUS = ((0, "Available"), (1, "Reserved"))
 
 
 class Table(models.Model):
     table_number = models.IntegerField(unique=True)
     capacity = models.IntegerField()
-    status = models.CharField(max_length=20, choices=[('available', 'Available'), ('reserved', 'Reserved'), ('occupied', 'Occupied')])
+    status = models.IntegerField(choices=STATUS, default=0)
 
     def __str__(self):
         return f"Table {self.table_number}"
@@ -30,7 +34,8 @@ class Customer(models.Model):
 
 class Reservation(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    table = models.ForeignKey(
+        Table, on_delete=models.CASCADE, related_name='reservations')
     date = models.DateField()
     time = models.TimeField()
     number_of_guests = models.IntegerField()
