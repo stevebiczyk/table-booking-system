@@ -24,3 +24,14 @@ nav li:last-child {
     font-size: 1.5em;
     cursor: pointer;
 }
+
+.book-table-btn {
+    color: #fff;
+    border-color: #fff;
+}
+
+.book-table-btn:hover {
+    color: #007bff;
+    background-color: #fff;
+    border-color: #fff;
+}

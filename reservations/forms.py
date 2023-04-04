@@ -6,7 +6,8 @@ from .models import Staff
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ['date', 'time', 'guests', 'name', 'email', 'phone', 'notes']
+        fields = ['customer', 'table', 'date', 'time',
+                  'number_of_guests', 'special_requests']
 
 
 class StaffForm(forms.ModelForm):

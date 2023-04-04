@@ -1,50 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Restaurant - Table Booking</title>
-    <link rel="stylesheet" href="static/css/styles.css">
-</head>
+{% block title %}Home - My Hungarian Restaurant{% endblock %}
 
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </nav>
-        <h1>My Restaurant</h1>
-        <img src="static/img/logo.png" alt="Restaurant Logo">
-    </header>
-
-    <main>
-        <section>
-            <h2>Welcome to My Restaurant</h2>
-            <p>
-                We specialize in Hungarian cuisine, providing a cozy atmosphere for a memorable dining experience. Join
-                us for lunch or dinner and experience our exquisite dishes and impeccable service.
-            </p>
-            <img src="static/img/restaurant_interior.jpg" alt="Restaurant Interior">
-        </section>
-
-        <section>
-            <h2>Reserve Your Table</h2>
-            <p>
-                Booking a table has never been easier. Simply select your preferred date, time, and the number of
-                guests, and we'll take care of the rest. We look forward to welcoming you soon!
-            </p>
-            <a href="/booking" class="booking-button">Book a Table</a>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2023 My Hungarian Restaurant. All rights reserved.</p>
-    </footer>
-</body>
-
-</html>
+{% block content %}
+<h2>Welcome to My Hungarian Restaurant</h2>
+<p>
+    This is the home page for My Hungarian Restaurant. Here, you can find the latest news, updates, and special offers.
+</p>
+{% endblock %}

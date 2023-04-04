@@ -4,21 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Restaurant Name{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{% block title %}My Hungarian Restaurant{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/gallery">Gallery</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/booking">Book a table</a></li>
-            </ul>
+            <a class="navbar-brand" href="{% url 'home' %}">My Hungarian Restaurant</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="/home">Home</a></li>
+                    <li class="nav-item"><a href="/menu">Menu</a></li>
+                    <li class="nav-item"><a href="/about">About</a></li>
+                    <li class="nav-item"><a href="/gallery">Gallery</a></li>
+                    <li class="nav-item"><a href="/contact">Contact</a></li>
+                    <li class="nav-item"><a href="/booking">Book a table</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'booking' %}">
+                            <button class="btn btn-outline-primary my-2 my-sm-0 book-table-btn" type="button">Book a
+                                Table</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <h1>My Hungarian Restaurant</h1>
         <img src="{% static 'img/logo.png' %}" alt="Restaurant Logo">
