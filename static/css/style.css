@@ -4,6 +4,19 @@ nav {
     align-items: center;
 }
 
+.navbar {
+    background-color: #808080;
+}
+
+.navbar .nav-link {
+    color: #FFFFFF;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-item.active .nav-link {
+    color: #FFFFFF;
+}
+
 nav ul {
     list-style-type: none;
     margin: 0;
@@ -19,19 +32,27 @@ nav li:last-child {
     margin-right: 0;
 }
 
+.book-table-btn {
+    background-color: #D4672C;
+    border-color: #D4672C;
+    color: #fff;
+    border-color: #fff;
+}
+
+.book-table-btn:hover {
+    background-color: #BB3B0E;
+    border-color: #BB3B0E;
+    color: #007bff;
+    background-color: #fff;
+    border-color: #fff;
+}
+
 .hamburger-menu {
     display: none;
     font-size: 1.5em;
     cursor: pointer;
 }
 
-.book-table-btn {
-    color: #fff;
-    border-color: #fff;
-}
-
-.book-table-btn:hover {
-    color: #007bff;
-    background-color: #fff;
-    border-color: #fff;
+body {
+    font-family: 'Roboto', sans-serif;
 }
