@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Reservation - My Hungarian Restaurant{% endblock %}
+
+{% block content %}
+<h2>Update Reservation</h2>
+<p>
+    Update the reservation details by modifying the form below.
+</p>
+<section>
+    <h2>Update Your Reservation</h2>
+    <form action="{% url 'update_booking' pk=reservation.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update Reservation">
+    </form>
+</section>
+{% endblock %}
