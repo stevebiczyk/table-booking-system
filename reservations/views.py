@@ -4,23 +4,23 @@ from django.views import generic
 from .forms import ReservationForm
 
 
-def booking(request):
-    if request.method == 'POST':
+def create_booking(request):
+    if request.method == "POST":
         form = ReservationForm(request.POST)
         if form.is_valid():
+            customer_data = {
+                'first_name': form.cleaned_data['first_name'],
+                'last_name': form.cleaned_data['last_name'],
+                'email': form.cleaned_data['email'],
+                'phone': form.cleaned_data['phone'],
+            }
+            customer, _ = Customer.objects.get_or_create(**customer_data)
             reservation = form.save(commit=False)
-            customer, _ = Customer.objects.get_or_create(
-                first_name=form.cleaned_data['first_name'],
-                last_name=form.cleaned_data['last_name'],
-                email=form.cleaned_data['email'],
-                phone=form.cleaned_data['phone']
-            )
             reservation.customer = customer
             reservation.save()
-            # Redirect to a success page or show a success message
+            return redirect('bookings_list')
     else:
         form = ReservationForm()
-
     return render(request, 'booking.html', {'form': form})
 
 
@@ -44,5 +44,5 @@ def contact(request):
     return render(request, 'contact.html')
 
 
-def booking(request):
-    return render(request, 'booking.html')
+# def booking(request):
+#     return render(request, 'booking.html')
