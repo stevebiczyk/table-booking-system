@@ -10,27 +10,8 @@
 <section>
     <h2>Book Your Table</h2>
     <form action="/booking/submit" method="post">
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required>
-
-        <label for="time">Time:</label>
-        <input type="time" id="time" name="time" required>
-
-        <label for="guests">Number of Guests:</label>
-        <input type="number" id="guests" name="guests" min="1" required>
-
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required>
-
-        <label for="notes">Special Requests (optional):</label>
-        <textarea id="notes" name="notes"></textarea>
-
+        {% csrf_token %}
+        {{ form.as_p }}
         <input type="submit" value="Book Now">
     </form>
 </section>

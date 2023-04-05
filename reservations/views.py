@@ -8,11 +8,20 @@ def booking(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('booking_success')
+            reservation = form.save(commit=False)
+            customer, _ = Customer.objects.get_or_create(
+                first_name=form.cleaned_data['first_name'],
+                last_name=form.cleaned_data['last_name'],
+                email=form.cleaned_data['email'],
+                phone=form.cleaned_data['phone']
+            )
+            reservation.customer = customer
+            reservation.save()
+            # Redirect to a success page or show a success message
     else:
         form = ReservationForm()
-    return render(request, 'booking_form.html', {'form': form})
+
+    return render(request, 'booking.html', {'form': form})
 
 
 def home(request):
