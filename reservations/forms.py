@@ -5,23 +5,22 @@ import datetime
 
 
 class ReservationForm(forms.ModelForm):
+    date = forms.DateField(widget=forms.SelectDateWidget())
+    time = forms.ChoiceField(choices=[])
+
     class Meta:
         model = Reservation
-        fields = ['table', 'date', 'time',
-                  'number_of_guests', 'special_requests']
-
-    first_name = forms.CharField()
-    last_name = forms.CharField()
-    email = forms.EmailField()
-    phone = forms.CharField()
+        fields = ['date', 'time', 'number_of_guests', 'special_requests']
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['time'].widget.attrs.update({"class": "time-field"})
+        super(ReservationForm, self).__init__(*args, **kwargs)
+        if 'initial' in kwargs and 'table' in kwargs['initial'] and 'date' in kwargs['initial']:
+            self.update_time_choices(
+                kwargs['initial']['table'], kwargs['initial']['date'])
 
-    def update_time_choices(self, table):
+    def update_time_choices(self, table, date):
         reserved_times = Reservation.objects.filter(
-            table=table, date=self.cleaned_data['date']).values_list('time', flat=True)
+            table=table, date=date).values_list('time', flat=True)
         available_times = []
 
         for hour in range(0, 24):

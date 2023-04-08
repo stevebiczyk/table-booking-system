@@ -11,7 +11,8 @@
     <h2>Book Your Table</h2>
     <form action="/booking/submit" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ customer_form.as_p }}
+        {{ reservation_form.as_p }}
         <input type="submit" value="Book Now">
     </form>
 </section>
