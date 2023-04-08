@@ -1,4 +1,7 @@
+from django.core.validators import MaxValueValidator
 from django.db import models
+from django.db.models.signals import post_migrate
+from django.dispatch import receiver
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
@@ -7,7 +10,8 @@ STATUS = ((0, "Available"), (1, "Reserved"))
 
 class Table(models.Model):
     table_number = models.IntegerField(unique=True)
-    capacity = models.IntegerField()
+    # Added a validator to limit the capacity to 5
+    capacity = models.IntegerField(validators=[MaxValueValidator(5)])
     status = models.IntegerField(choices=STATUS, default=0)
 
     def __str__(self):
@@ -23,8 +27,8 @@ class Staff(models.Model):
 
 
 class Customer(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
 
@@ -43,3 +47,9 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f"{self.customer} - {self.date} {self.time}"
+
+
+@receiver(post_migrate)
+def create_tables(sender, **kwargs):
+    for i in range(1, 6):  # Created 5 tables
+        Table.objects.get_or_create(table_number=i, capacity=5)

@@ -21,6 +21,12 @@ def create_booking(request):
             return redirect('bookings_list')
     else:
         form = ReservationForm()
+
+        if 'table' in request.GET:
+            table_id = request.GET.get('table')
+            table = Table.objects.get(id=table_id)
+            form.update_time_choices(table)
+
     return render(request, 'booking.html', {'form': form})
 
 

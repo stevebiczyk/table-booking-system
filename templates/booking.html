@@ -16,3 +16,14 @@
     </form>
 </section>
 {% endblock %}
+{% block extra_js %}
+<script>
+    const tableSelect = document.querySelector("#id_table");
+    const timeSelect = document.querySelector(".time-field");
+
+    tableSelect.addEventListener("change", () => {
+        const tableId = tableSelect.value;
+        window.location.href = `/booking/create/?table=${tableId}`;
+    });
+</script>
+{% endblock %}
