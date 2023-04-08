@@ -1,20 +1,30 @@
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
+/* Set the padding and background color for the navigation bar */
 .navbar {
+    padding: 1rem 2rem;
     background-color: #808080;
 }
 
-.navbar .nav-link {
-    color: #FFFFFF;
+/* Set the font size and color for the navigation links */
+.nav-link {
+    font-size: 1.1rem;
+    color: #ffffff;
 }
 
-.navbar .nav-link:hover,
-.navbar .nav-item.active .nav-link {
-    color: #FFFFFF;
+/* Change the color of navigation links on hover */
+.nav-link:hover,
+.nav-item.active .nav-link {
+    color: #ffffff;
+}
+
+/* Set the font size and color for the navbar-brand */
+.navbar-brand {
+    font-size: 1.5rem;
+    color: #f8f9fa;
+}
+
+/* Change the color of the navbar-brand on hover */
+.navbar-brand:hover {
+    color: #ffc107;
 }
 
 nav ul {
