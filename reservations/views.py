@@ -15,17 +15,23 @@ def create_booking(request):
             reservation = reservation_form.save(commit=False)
             reservation.customer = customer
             reservation.save()
-            return redirect('bookings_list')
+            return redirect(reverse('booking_confirmation', args=[reservation.id]))
     else:
-        reservation_form = ReservationForm()
+        initial_data = {}
+        if 'table' in request.GET:
+            initial_data['table'] = request.GET.get('table')
+        if 'date' in request.GET:
+            initial_data['date'] = request.GET.get('date')
+
+        reservation_form = ReservationForm(initial=initial_data)
         customer_form = CustomerForm()
 
-        if 'table' in request.GET:
-            table_id = request.GET.get('table')
-            table = Table.objects.get(id=table_id)
-            reservation_form.update_time_choices(table)
-
     return render(request, 'booking.html', {'reservation_form': reservation_form, 'customer_form': customer_form})
+
+
+def booking_confirmation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+    return render(request, 'booking_confirmation.html', {'reservation': reservation})
 
 
 def bookings_list(request):
@@ -74,7 +80,3 @@ def gallery(request):
 
 def contact(request):
     return render(request, 'contact.html')
-
-
-# def booking(request):
-#     return render(request, 'booking.html')

@@ -1,12 +1,13 @@
 from django import forms
-from .models import Customer, Reservation
+from .models import Customer, Reservation, Table
 from .models import Staff
-import datetime
+from datetime import date, time
 
 
 class ReservationForm(forms.ModelForm):
-    date = forms.DateField(widget=forms.SelectDateWidget())
+    date = forms.DateField(widget=forms.SelectDateWidget, initial=date.today())
     time = forms.ChoiceField(choices=[])
+    table = forms.ModelChoiceField(queryset=Table.objects.all())
 
     class Meta:
         model = Reservation
