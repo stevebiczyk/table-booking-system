@@ -32,6 +32,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['table-booking-system-sb.herokuapp.com', 'localhost',
                  '*']
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-stevebiczyk-tablebookin-jcvyspcnkd6.ws-eu93.gitpod.io/*']
 
@@ -43,11 +45,20 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
     'reservations',
 ]
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
