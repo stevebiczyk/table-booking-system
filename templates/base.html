@@ -32,6 +32,12 @@
                     <li class="nav-item"><a href="/about">About</a></li>
                     <li class="nav-item"><a href="/gallery">Gallery</a></li>
                     <li class="nav-item"><a href="/contact">Contact</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Login</a></li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'create_booking' %}">
                             <button class="btn btn-outline-primary my-2 my-sm-0 book-table-btn" type="button">Book a
