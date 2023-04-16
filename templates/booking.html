@@ -13,7 +13,7 @@
         {% csrf_token %}
         {{ customer_form.as_p }}
         {{ reservation_form.as_p }}
-        <input type="submit" value="Book Now">
+        <button type="submit" class="btn btn-primary">Book Now</button>
     </form>
     <!-- Display form errors here -->
     {% if customer_form.errors %}
@@ -34,5 +34,9 @@
         {% endfor %}
     </ul>
     {% endif %}
+</section>
+<section>
+    <h2>View Bookings</h2>
+    <a href="{% url 'bookings_list' %}" class="btn btn-primary">View Bookings List</a>
 </section>
 {% endblock %}
