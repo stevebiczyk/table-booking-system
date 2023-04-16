@@ -7,7 +7,7 @@ from datetime import date, time
 class ReservationForm(forms.ModelForm):
     date = forms.DateField(widget=forms.SelectDateWidget, initial=date.today())
     time = forms.TimeInput(format='%H:%M')
-    table = forms.ModelChoiceField(queryset=Table.objects.all())
+    table = forms.ModelChoiceField(queryset=Table.objects.all(), required=True)
 
     class Meta:
         model = Reservation
