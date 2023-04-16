@@ -35,7 +35,7 @@ ALLOWED_HOSTS = ['table-booking-system-sb.herokuapp.com', 'localhost',
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-stevebiczyk-tablebookin-jcvyspcnkd6.ws-eu93.gitpod.io/*']
+    'https://8000-stevebiczyk-tablebookin-jcvyspcnkd6.ws-eu94.gitpod.io/*']
 
 # Application definition
 
