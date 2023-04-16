@@ -4,10 +4,11 @@
 <h1>Booking Confirmation</h1>
 <p>Thank you for your reservation! Here are the details:</p>
 <ul>
+    <li>Booking ID: {{ reservation.id }}</li>
     <li>Customer: {{ reservation.customer.first_name }} {{ reservation.customer.last_name }}</li>
     <li>Email: {{ reservation.customer.email }}</li>
     <li>Phone: {{ reservation.customer.phone }}</li>
-    <li>Table: {{ reservation.table.table_number }}</li>
+    <li>Table Number: {{ reservation.table.table_number }}</li>
     <li>Date: {{ reservation.date }}</li>
     <li>Time: {{ reservation.time }}</li>
     <li>Number of Guests: {{ reservation.number_of_guests }}</li>

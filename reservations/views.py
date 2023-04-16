@@ -56,10 +56,10 @@ def update_booking(request, pk):
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
             form.save()
-            return redirect('bookings_list')
+            return redirect('booking_confirmation', reservation_id=reservation.pk)
     else:
         form = ReservationForm(instance=reservation)
-    return render(request, 'update_booking.html', {'form': form})
+    return render(request, 'update_booking.html', {'reservation': reservation, 'form': form})
 
 
 def delete_booking(request, pk):
