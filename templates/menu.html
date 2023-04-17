@@ -1,38 +1,33 @@
 {% extends 'base.html' %}
 
-{% block title %}Menu - My Hungarian Restaurant{% endblock %}
+{% load static %}
+
+{% block title %}Menu & Gallery - My Hungarian Restaurant{% endblock %}
 
 {% block content %}
-<h2>Our Menu</h2>
+<h2>Our Menu & Gallery</h2>
 <p>
     At My Hungarian Restaurant, we offer a wide range of traditional Hungarian dishes, made with the freshest
     ingredients.
 </p>
+
 <div class="container">
-    <h2 class="text-center my-4">Menu</h2>
+    <h2 class="text-center my-4">Menu & Gallery</h2>
 
-    <h3>Starters</h3>
-    <ul>
-        <li>Goulash Soup</li>
-        <li>Stuffed Peppers</li>
-        <li>Ujházi Chicken Soup</li>
-    </ul>
-
-    <h3>Main Courses</h3>
-    <ul>
-        <li>Chicken Paprikash</li>
-        <li>Töltött Káposzta (Stuffed Cabbage Rolls)</li>
-        <li>Pörkölt (Beef and Onion Stew)</li>
-        <li>Grilled Sausages with Pickles</li>
-        <li>Hortobágyi Palacsinta (Savory Stuffed Pancakes)</li>
-    </ul>
-
-    <h3>Desserts</h3>
-    <ul>
-        <li>Chimney Cake (Kürtőskalács)</li>
-        <li>Somlói Galuska (Trifle)</li>
-        <li>Strudel (Rétes) with Various Fillings</li>
-    </ul>
+    {% for category, dishes in menu %}
+    <h3>{{ category }}</h3>
+    <div class="row">
+        {% for dish in dishes %}
+        <div class="col-md-4 mb-3">
+            <div class="card bg-dark text-white">
+                <img src="{% static dish.image %}" class="card-img" alt="{{ dish.name }}">
+                <div class="card-img-overlay d-flex align-items-center">
+                    <h5 class="card-title text-center w-100">{{ dish.name }}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
 </div>
-
 {% endblock %}

@@ -82,7 +82,33 @@ def about(request):
 
 
 def menu(request):
-    return render(request, 'menu.html')
+    menu = [
+        ('Starters', [
+            {'name': 'Goulash Soup', 'image': 'img/goulash-soup.jpg'},
+            {'name': 'Stuffed Peppers', 'image': 'img/stuffed-peppers.jpg'},
+            {'name': 'Ujházi Chicken Soup', 'image': 'img/ujhazi-chicken-soup.jpg'},
+        ]),
+        ('Main Courses', [
+            {'name': 'Chicken Paprikash', 'image': 'img/chicken-paprikash.jpg'},
+            {'name': 'Töltött Káposzta (Stuffed Cabbage Rolls)',
+             'image': 'img/stuffed-cabbage-rolls.jpg'},
+            {'name': 'Pörkölt (Beef and Onion Stew)',
+             'image': 'img/beef-onion-stew.jpg'},
+            {'name': 'Grilled Sausages with Pickles',
+                'image': 'img/grilled-sausages.jpg'},
+            {'name': 'Hortobágyi Palacsinta (Savory Stuffed Pancakes)',
+             'image': 'img/savory-stuffed-pancakes.jpg'},
+        ]),
+        ('Desserts', [
+            {'name': 'Chimney Cake (Kürtőskalács)',
+             'image': 'img/chimney-cake.jpg'},
+            {'name': 'Somlói Galuska (Trifle)',
+             'image': 'img/somloi-galuska.jpg'},
+            {'name': 'Strudel (Rétes) with Various Fillings',
+             'image': 'img/strudel.jpg'},
+        ]),
+    ]
+    return render(request, 'menu.html', {'menu': menu})
 
 
 def gallery(request):
