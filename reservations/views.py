@@ -4,7 +4,7 @@ from datetime import date
 from django.urls import reverse
 from django.db import IntegrityError
 from .models import Customer, Reservation, Table
-from .forms import ReservationForm, CustomerForm
+from .forms import ReservationForm, CustomerForm, ContactForm
 
 
 def create_booking(request):
@@ -116,4 +116,5 @@ def gallery(request):
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
