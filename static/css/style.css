@@ -65,11 +65,18 @@ nav li:last-child {
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #5C6771 !important;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: transparent;
+    padding: 2rem 0;
 }
 
 /* Hero image */
 .hero-image {
-    background-image: url("hero-image.jpg");
+    background-image: url("/static/css/hero-image.jpg");
     height: 80vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -94,6 +101,14 @@ body {
     font-size: 1.5rem;
 }
 
+.hero-text:hover h1 {
+    color: #D4672C;
+}
+
+.hero-text:hover p {
+    color: #D4672C;
+}
+
 /* Selling points */
 .selling-points {
     padding: 2rem 0;
@@ -107,6 +122,21 @@ body {
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
+
+.selling-points h3,
+.featured-dish h3,
+.events-news h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.selling-points p,
+.featured-dish p,
+.events-news p {
+    color: #fff;
+}
+
 
 /* Featured dish */
 .featured-dish {
