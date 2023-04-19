@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from datetime import date
 from django.urls import reverse
+from django.http import HttpResponseForbidden
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from .models import Customer, Reservation, Table
 from .forms import ReservationForm, CustomerForm, ContactForm
@@ -50,8 +52,14 @@ def bookings_list(request):
     return render(request, 'bookings_list.html', {'reservations': reservations})
 
 
+@login_required
 def update_booking(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
+
+    # Only the customer who made the booking or the site admin can update the booking
+    if request.user != reservation.customer.user:  # and not request.user.is_staff:
+        return HttpResponseForbidden()
+
     if request.method == "POST":
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
@@ -60,6 +68,16 @@ def update_booking(request, pk):
     else:
         form = ReservationForm(instance=reservation)
     return render(request, 'update_booking.html', {'reservation': reservation, 'form': form})
+# def update_booking(request, pk):
+#     reservation = get_object_or_404(Reservation, pk=pk)
+#     if request.method == "POST":
+#         form = ReservationForm(request.POST, instance=reservation)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('booking_confirmation', reservation_id=reservation.pk)
+#     else:
+#         form = ReservationForm(instance=reservation)
+#     return render(request, 'update_booking.html', {'reservation': reservation, 'form': form})
 
 
 def delete_booking(request, pk):
