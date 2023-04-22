@@ -57,7 +57,7 @@ def bookings_list(request):
 @login_required
 def update_booking(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
-    customer = get_object_or_404(Customer, user=request.user)
+    customer = get_object_or_404(Customer,  user=request.user)
 
     # Only the customer who made the booking or the site admin can update the booking
     if reservation.customer != customer and not request.user.is_superuser:

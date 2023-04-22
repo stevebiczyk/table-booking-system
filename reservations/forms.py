@@ -1,5 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.forms import UserCreationForm
 from .models import Customer, Reservation, Table
 from .models import Staff
@@ -9,8 +10,16 @@ from datetime import date, time
 
 class ReservationForm(forms.ModelForm):
     date = forms.DateField(widget=forms.SelectDateWidget, initial=date.today())
-    time = forms.TimeInput(format='%H:%M')
+    time = forms.TimeField(
+        input_formats=['%H:%M'],
+        # Input field with 24-hour format and 30-minute intervals
+        widget=forms.TimeInput(
+            attrs={'type': 'time', 'step': '1800'}, format='%H:%M')
+    )
     table = forms.ModelChoiceField(queryset=Table.objects.all(), required=True)
+    number_of_guests = forms.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(25)]
+    )
 
     class Meta:
         model = Reservation
@@ -38,7 +47,7 @@ class ReservationForm(forms.ModelForm):
             table=table, date=date).values_list('time', flat=True)
         available_times = []
 
-        for hour in range(9, 22):
+        for hour in range(9, 21):
             current_time = datetime.time(hour, 0)
             if current_time not in reserved_times:
                 available_times.append((current_time.strftime(
