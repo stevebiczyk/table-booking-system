@@ -3,11 +3,12 @@ from django.views import generic
 from datetime import date
 from django.urls import reverse
 from django.contrib import messages
+from django.contrib.auth import login
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from .models import Customer, Reservation, Table
-from .forms import ReservationForm, CustomerForm, ContactForm
+from .forms import ReservationForm, CustomerForm, ContactForm, CustomUserCreationForm
 
 
 def create_booking(request):
