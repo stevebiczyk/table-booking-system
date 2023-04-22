@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from datetime import date
 from django.urls import reverse
-from django.http import HttpResponseForbidden
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from .models import Customer, Reservation, Table
@@ -55,10 +56,11 @@ def bookings_list(request):
 @login_required
 def update_booking(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
+    customer = get_object_or_404(Customer, user=request.user)
 
     # Only the customer who made the booking or the site admin can update the booking
-    if request.customer != reservation.customer:  # and not request.user.is_staff:
-        return HttpResponseForbidden()
+    if reservation.customer != customer and not request.user.is_superuser:
+        raise PermissionDenied
 
     if request.method == "POST":
         form = ReservationForm(request.POST, instance=reservation)
@@ -83,10 +85,11 @@ def update_booking(request, pk):
 @login_required
 def delete_booking(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
+    customer = get_object_or_404(Customer, user=request.user)
 
     # Only the customer who made the booking or the site admin can update the booking
-    if request.customer != reservation.customer:  # and not request.user.is_staff:
-        return HttpResponseForbidden()
+    if reservation.customer != customer and not request.user.is_superuser:
+        raise PermissionDenied
 
     if request.method == 'POST':
         reservation.delete()

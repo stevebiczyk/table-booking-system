@@ -27,6 +27,7 @@ class Staff(models.Model):
 
 
 class Customer(models.Model):
+    # user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -37,7 +38,7 @@ class Customer(models.Model):
 
 
 class Reservation(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
     table = models.ForeignKey(
         Table, on_delete=models.CASCADE, related_name='reservations')
     date = models.DateField()
