@@ -57,7 +57,7 @@ def update_booking(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
 
     # Only the customer who made the booking or the site admin can update the booking
-    if request.user != reservation.customer.user:  # and not request.user.is_staff:
+    if request.customer != reservation.customer:  # and not request.user.is_staff:
         return HttpResponseForbidden()
 
     if request.method == "POST":
@@ -80,8 +80,13 @@ def update_booking(request, pk):
 #     return render(request, 'update_booking.html', {'reservation': reservation, 'form': form})
 
 
+@login_required
 def delete_booking(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
+
+    # Only the customer who made the booking or the site admin can update the booking
+    if request.customer != reservation.customer:  # and not request.user.is_staff:
+        return HttpResponseForbidden()
 
     if request.method == 'POST':
         reservation.delete()
