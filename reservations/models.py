@@ -26,20 +26,20 @@ class Staff(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-class Customer(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, null=True, blank=True)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone = models.CharField(max_length=20)
+# class Customer(models.Model):
+#     user = models.OneToOneField(
+#         User, on_delete=models.CASCADE, null=True, blank=True)
+#     first_name = models.CharField(max_length=100)
+#     last_name = models.CharField(max_length=100)
+#     email = models.EmailField()
+#     phone = models.CharField(max_length=20)
 
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+#     def __str__(self):
+#         return f"{self.first_name} {self.last_name}"
 
 
 class Reservation(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     table = models.ForeignKey(
         Table, on_delete=models.CASCADE, related_name='reservations')
     date = models.DateField()
@@ -48,7 +48,11 @@ class Reservation(models.Model):
     special_requests = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.customer} - {self.date} {self.time}"
+        return f"{self.user} - {self.date} {self.time}"
+
+    class Meta:
+        verbose_name = 'Reservation'
+        verbose_name_plural = 'Reservations'
 
 
 @receiver(post_migrate)

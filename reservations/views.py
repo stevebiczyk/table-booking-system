@@ -7,23 +7,17 @@ from django.contrib.auth import login
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
-from .models import Customer, Reservation, Table
-from .forms import ReservationForm, CustomerForm, ContactForm, CustomUserCreationForm
+from .models import Reservation, Table
+from .forms import ReservationForm, ContactForm, CustomUserCreationForm
 
 
+@login_required
 def create_booking(request):
     if request.method == "POST":
         reservation_form = ReservationForm(request.POST)
-        customer_form = CustomerForm(request.POST)
-        if reservation_form.is_valid() and customer_form.is_valid():
-            try:
-                customer = customer_form.save()
-            except IntegrityError:
-                # If the email already exists, retrieve the existing customer
-                customer = Customer.objects.get(
-                    email=customer_form.cleaned_data['email'])
+        if reservation_form.is_valid():
             reservation = reservation_form.save(commit=False)
-            reservation.customer = customer
+            reservation.customer = request.user
             # Get the table_id value from the POST data
             table_id = request.POST.get('table')
             if table_id:
@@ -39,9 +33,8 @@ def create_booking(request):
             initial_data['date'] = request.GET.get('date')
 
         reservation_form = ReservationForm(initial=initial_data)
-        customer_form = CustomerForm()
 
-    return render(request, 'booking.html', {'reservation_form': reservation_form, 'customer_form': customer_form})
+    return render(request, 'booking.html', {'reservation_form': reservation_form})
 
 
 def booking_confirmation(request, reservation_id):
@@ -57,10 +50,9 @@ def bookings_list(request):
 @login_required
 def update_booking(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
-    customer = get_object_or_404(Customer,  user=request.user)
 
     # Only the customer who made the booking or the site admin can update the booking
-    if reservation.customer != customer and not request.user.is_superuser:
+    if reservation.customer != request.user and not request.user.is_superuser:
         raise PermissionDenied
 
     if request.method == "POST":
@@ -71,25 +63,14 @@ def update_booking(request, pk):
     else:
         form = ReservationForm(instance=reservation)
     return render(request, 'update_booking.html', {'reservation': reservation, 'form': form})
-# def update_booking(request, pk):
-#     reservation = get_object_or_404(Reservation, pk=pk)
-#     if request.method == "POST":
-#         form = ReservationForm(request.POST, instance=reservation)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('booking_confirmation', reservation_id=reservation.pk)
-#     else:
-#         form = ReservationForm(instance=reservation)
-#     return render(request, 'update_booking.html', {'reservation': reservation, 'form': form})
 
 
 @login_required
 def delete_booking(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
-    customer = get_object_or_404(Customer, user=request.user)
 
     # Only the customer who made the booking or the site admin can update the booking
-    if reservation.customer != customer and not request.user.is_superuser:
+    if reservation.customer != request.user and not request.user.is_superuser:
         raise PermissionDenied
 
     if request.method == 'POST':
@@ -145,6 +126,10 @@ def gallery(request):
 def contact(request):
     form = ContactForm()
     return render(request, 'contact.html', {'form': form})
+
+
+def gallery(request):
+    return render(request, 'gallery.html')
 
 
 # def signup(request):

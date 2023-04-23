@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.forms import UserCreationForm
-from .models import Customer, Reservation, Table
+from .models import Reservation, Table
 from .models import Staff
 import datetime
 from datetime import date, time
@@ -54,12 +54,6 @@ class ReservationForm(forms.ModelForm):
                     "%H:%M"), current_time.strftime("%H:%M")))
 
         self.fields['time'].choices = available_times
-
-
-class CustomerForm(forms.ModelForm):
-    class Meta:
-        model = Customer
-        fields = ['first_name', 'last_name', 'email', 'phone']
 
 
 class StaffForm(forms.ModelForm):
