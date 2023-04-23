@@ -17,7 +17,7 @@ def create_booking(request):
         reservation_form = ReservationForm(request.POST)
         if reservation_form.is_valid():
             reservation = reservation_form.save(commit=False)
-            reservation.customer = request.user
+            reservation.user = request.user
             # Get the table_id value from the POST data
             table_id = request.POST.get('table')
             if table_id:
@@ -52,8 +52,11 @@ def update_booking(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
 
     # Only the customer who made the booking or the site admin can update the booking
-    if reservation.customer != request.user and not request.user.is_superuser:
-        raise PermissionDenied
+    if request.user != reservation.user and not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have permission to edit this booking')
+        return redirect('bookings_list')
+        # raise PermissionDenied
 
     if request.method == "POST":
         form = ReservationForm(request.POST, instance=reservation)
@@ -70,8 +73,11 @@ def delete_booking(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
 
     # Only the customer who made the booking or the site admin can update the booking
-    if reservation.customer != request.user and not request.user.is_superuser:
-        raise PermissionDenied
+    if request.user != reservation.user and not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have permission to delete this booking')
+        return redirect('bookings_list')
+        # raise PermissionDenied
 
     if request.method == 'POST':
         reservation.delete()

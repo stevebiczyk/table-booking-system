@@ -6,7 +6,7 @@
     <thead>
         <tr>
             <th>Booking ID</th>
-            <th>Customer</th>
+            <th>Username</th>
             <th>Table</th>
             <th>Date</th>
             <th>Time</th>
@@ -18,11 +18,19 @@
         {% for reservation in reservations %}
         <tr>
             <td>{{ reservation.id }}</td>
-            <td>{{ reservation.customer }}</td>
+            <td>{{ reservation.user.username }}</td>
             <td>{{ reservation.table }}</td>
             <td>{{ reservation.date }}</td>
             <td>{{ reservation.time }}</td>
             <td>{{ reservation.number_of_guests }}</td>
+            <td>
+                <!-- {% if user == reservation.user %}
+                <a href="{% url 'update_booking' reservation.pk %}">Edit</a> |
+                <a href="{% url 'delete_booking' reservation.pk %}">Delete</a>
+                {% else %}
+                -
+                {% endif %}
+            </td> -->
             <td>
                 <a href="{% url 'update_booking' reservation.pk %}">Edit</a> |
                 <a href="{% url 'delete_booking' reservation.pk %}">Delete</a>
@@ -31,4 +39,11 @@
         {% endfor %}
     </tbody>
 </table>
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+{% endfor %}
+</div>
+{% endif %}
 {% endblock %}
