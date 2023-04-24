@@ -5,12 +5,14 @@
 {% block title %}Contact Us - My Hungarian Restaurant{% endblock %}
 
 {% block content %}
-<h2>Contact Us</h2>
-<p>
-    If you have any questions, suggestions, or feedback, please fill out the form below and we'll get back to you as
-    soon as possible.
-</p>
 <div class="container">
+    <h2>Contact Us</h2>
+    <p>
+        If you have any questions, suggestions, or feedback, please fill out the form below and we'll get back to you as
+        soon as possible.
+    </p>
+</div>
+<div class="form-container">
     <form method="POST" action="{% url 'contact' %}">
         {% csrf_token %}
         {% crispy form %}
