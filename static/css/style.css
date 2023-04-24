@@ -199,3 +199,8 @@ body {
     background-color: #F44336;
     color: white;
 }
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
