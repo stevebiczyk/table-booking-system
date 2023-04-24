@@ -20,41 +20,91 @@
         <!-- Navigation -->
         <nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-transparent navbar-dark bg-dark pt-3"
             id="navbar-main">
-            <a class="navbar-brand" href="{% url 'index' %}">My Hungarian Restaurant</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="/">Home</a></li>
-                    <li class="nav-item"><a href="/menu">Menu</a></li>
-                    <li class="nav-item"><a href="/about">About</a></li>
-                    <li class="nav-item"><a href="/gallery">Gallery</a></li>
-                    <li class="nav-item"><a href="/contact">Contact</a></li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item"><a href="{% url 'account_logout' %}">Logout</a></li>
-                    {% else %}
-                    <li class="nav-item"><a href="{% url 'account_signup' %}">Register</a></li>
-                    <li class="nav-item"><a href="{% url 'account_login' %}">Login</a></li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'create_booking' %}">
-                            <button class="btn btn-outline-primary my-2 my-sm-0 book-table-btn" type="button">Book a
-                                Table</button>
-                        </a>
-                    </li>
-                </ul>
+            <div class="container-fluid">
+                <img src="{% static 'img/logo.png' %}" alt="Restaurant Logo" class="logo" height="50">
+                <a class="navbar-brand" href="{% url 'index' %}">My Hungarian Restaurant</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/menu">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/gallery">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create_booking' %}">
+                                <button class="btn btn-outline-primary my-2 my-sm-0 book-table-btn" type="button">Book a
+                                    Table</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
+
+        <!-- <nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-transparent navbar-dark bg-dark pt-3"
+            id="navbar-main">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}">My Hungarian Restaurant</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="/">Home</a></li>
+                        <li class="nav-item"><a href="/menu">Menu</a></li>
+                        <li class="nav-item"><a href="/about">About</a></li>
+                        <li class="nav-item"><a href="/gallery">Gallery</a></li>
+                        <li class="nav-item"><a href="/contact">Contact</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a href="{% url 'account_logout' %}">Logout</a></li>
+                        {% else %}
+                        <li class="nav-item"><a href="{% url 'account_signup' %}">Register</a></li>
+                        <li class="nav-item"><a href="{% url 'account_login' %}">Login</a></li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create_booking' %}">
+                                <button class="btn btn-outline-primary my-2 my-sm-0 book-table-btn" type="button">Book a
+                                    Table</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav> -->
         <h1>My Hungarian Restaurant</h1>
-        <img src="{% static 'img/logo.png' %}" alt="Restaurant Logo" class="logo">
     </header>
 
     <main>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-12 col-lg-12">
+                <div class="col-md-12">
                     {% block content %}
                     {% endblock %}
                 </div>
