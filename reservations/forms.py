@@ -1,12 +1,11 @@
 from django import forms
 from allauth.account.forms import SignupForm
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.contrib.auth.forms import UserCreationForm
-from .models import Reservation, Table
-from .models import Staff
 import datetime
 from datetime import date, time
+from .models import Reservation, Table, Staff
 
 
 class CustomSignupForm(SignupForm):
@@ -50,8 +49,6 @@ class ReservationForm(forms.ModelForm):
         reservation_time = cleaned_data.get("time")
         opening_time = datetime.time(hour=9, minute=0)
         closing_time = datetime.time(hour=21, minute=0)
-        # opening_time = datetime.time(9, 0)
-        # closing_time = datetime.time(21, 0)
 
         # Check if the reservation time is within opening hours
         if reservation_time is not None and (reservation_time < opening_time or reservation_time >= closing_time):
@@ -59,30 +56,64 @@ class ReservationForm(forms.ModelForm):
                 "Please choose a reservation time between 09:00 and 21:00."
             )
 
-            # Check if the selected date and time are in the past
+        # Check if the selected date and time are in the past
         date = cleaned_data.get('date')
         time = cleaned_data.get('time')
+        table = cleaned_data.get('table')
         if date and time:
             now = datetime.datetime.now()
             reservation_datetime = datetime.datetime.combine(date, time)
             if reservation_datetime < now:
                 raise ValidationError(
-                    "You cannot make a booking for a past date and time.")
+                    "You cannot make a booking for a past date and time."
+                )
+
+            # Check if the table is available for the selected date and time
+            existing_reservation = Reservation.objects.filter(
+                table=table, date=date, time=time).exists()
+            if existing_reservation:
+                raise ValidationError(
+                    "The selected table is not available at the chosen time. Please choose a different time."
+                )
+
         return cleaned_data
 
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     reservation_time = cleaned_data.get("time")
+    #     opening_time = datetime.time(hour=9, minute=0)
+    #     closing_time = datetime.time(hour=21, minute=0)
 
-def update_time_choices(self, table, date):
-    reserved_times = Reservation.objects.filter(
-        table=table, date=date).values_list('time', flat=True)
-    available_times = []
+    #     # Check if the reservation time is within opening hours
+    #     if reservation_time is not None and (reservation_time < opening_time or reservation_time >= closing_time):
+    #         raise ValidationError(
+    #             "Please choose a reservation time between 09:00 and 21:00."
+    #         )
 
-    for hour in range(9, 21):
-        current_time = datetime.time(hour, 0)
-        if current_time not in reserved_times:
-            available_times.append((current_time.strftime(
-                "%H:%M"), current_time.strftime("%H:%M")))
+    #         # Check if the selected date and time are in the past
+    #     date = cleaned_data.get('date')
+    #     time = cleaned_data.get('time')
+    #     if date and time:
+    #         now = datetime.datetime.now()
+    #         reservation_datetime = datetime.datetime.combine(date, time)
+    #         if reservation_datetime < now:
+    #             raise ValidationError(
+    #                 "You cannot make a booking for a past date and time.")
+    #     return cleaned_data
 
-    self.fields['time'].choices = available_times
+    # def update_time_choices(self, table, date):
+    #     # retrieve all existing reservations for the specified table and date
+    #     reserved_times = Reservation.objects.filter(
+    #         table=table, date=date).values_list('time', flat=True)
+    #     available_times = []
+
+    #     for hour in range(9, 21):
+    #         current_time = datetime.time(hour, 0)
+    #         if current_time not in reserved_times:
+    #             available_times.append((current_time.strftime(
+    #                 "%H:%M"), current_time.strftime("%H:%M")))
+
+    #     self.fields['time'].choices = available_times
 
 
 class StaffForm(forms.ModelForm):

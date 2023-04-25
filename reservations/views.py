@@ -34,12 +34,14 @@ def create_booking(request):
 
         reservation_form = ReservationForm(initial=initial_data)
 
-    return render(request, 'booking.html', {'reservation_form': reservation_form})
+    return render(request, 'booking.html',
+                  {'reservation_form': reservation_form})
 
 
 def booking_confirmation(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id)
-    return render(request, 'booking_confirmation.html', {'reservation': reservation})
+    return render(request, 'booking_confirmation.html',
+                  {'reservation': reservation})
 
 
 def bookings_list(request):
