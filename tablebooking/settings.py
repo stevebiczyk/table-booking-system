@@ -32,6 +32,12 @@ DEBUG = True
 ALLOWED_HOSTS = ['table-booking-system-sb.herokuapp.com', 'localhost',
                  '*']
 
+ACCOUNT_FORMS = {
+    # Custom signup form to include the user's first and last name.
+    'signup': 'reservations.forms.CustomSignupForm',
+}
+
+
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 CSRF_TRUSTED_ORIGINS = [
