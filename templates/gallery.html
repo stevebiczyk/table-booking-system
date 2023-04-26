@@ -9,15 +9,71 @@
 <p>
     Browse through our gallery to see the ambiance, dishes, and events at My Hungarian Restaurant.
 </p>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        {% for row in "123" %}
-        {% for col in "123" %}
-        <div class="col-md-4 mb-3">
-            <img src="{% static 'img/image.jpg' %}" class="img-fluid" alt="Image">
+        <div class="col-md-2 p-0">
+            <img src="/static/img/beef-onion-stew.jpg" alt="Image 1" class="img-fluid">
         </div>
-        {% endfor %}
-        {% endfor %}
+        <div class="col-md-2 p-0 d-flex align-items-center justify-content-center bg-dark text-light">
+            <p>Text for div 2</p>
+        </div>
+        <div class="col-md-2 p-0">
+            <img src="/static/img/stuffed-peppers.jpg" alt="Image 2" class="img-fluid">
+        </div>
+        <div class="col-md-2 p-0 d-flex align-items-center justify-content-center bg-dark text-light">
+            <p>Text for div 4</p>
+        </div>
+        <div class="col-md-2 p-0">
+            <img src="/static/img/ujhazi-chicken-soup.jpg" alt="Image 3" class="img-fluid">
+        </div>
+        <div class="col-md-2 p-0 d-flex align-items-center justify-content-center bg-dark text-light">
+            <p>Text for div 6</p>
+        </div>
     </div>
 </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 p-0">
+            <img src="/static/img/beef-onion-stew.jpg" alt="Image 1" class="img-fluid">
+        </div>
+        <div class="col-md-2 p-0 d-flex align-items-center justify-content-center bg-dark text-light">
+            <p>Text for div 2</p>
+        </div>
+        <div class="col-md-2 p-0">
+            <img src="/static/img/stuffed-peppers.jpg" alt="Image 2" class="img-fluid">
+        </div>
+        <div class="col-md-2 p-0 d-flex align-items-center justify-content-center bg-dark text-light">
+            <p>Text for div 4</p>
+        </div>
+        <div class="col-md-2 p-0">
+            <img src="/static/img/ujhazi-chicken-soup.jpg" alt="Image 3" class="img-fluid">
+        </div>
+        <div class="col-md-2 p-0 d-flex align-items-center justify-content-center bg-dark text-light">
+            <p>Text for div 6</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 p-0">
+            <img src="/static/img/beef-onion-stew.jpg" alt="Image 1" class="img-fluid">
+        </div>
+        <div class="col-md-2 p-0 d-flex align-items-center justify-content-center bg-dark text-light">
+            <p>Text for div 2</p>
+        </div>
+        <div class="col-md-2 p-0">
+            <img src="/static/img/stuffed-peppers.jpg" alt="Image 2" class="img-fluid">
+        </div>
+        <div class="col-md-2 p-0 d-flex align-items-center justify-content-center bg-dark text-light">
+            <p>Text for div 4</p>
+        </div>
+        <div class="col-md-2 p-0">
+            <img src="/static/img/ujhazi-chicken-soup.jpg" alt="Image 3" class="img-fluid">
+        </div>
+        <div class="col-md-2 p-0 d-flex align-items-center justify-content-center bg-dark text-light">
+            <p>Text for div 6</p>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

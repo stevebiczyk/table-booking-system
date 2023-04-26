@@ -5,32 +5,34 @@
 {% block title %}Book a Table - My Hungarian Restaurant{% endblock %}
 
 {% block content %}
-<h2>Book a Table</h2>
-<p>
-    Reserve your table at My Hungarian Restaurant by filling out the form below.
-</p>
-<section>
-    <h2>Book Your Table</h2>
-    <div class="form-container">
-        <form method="post" action="{% url 'create_booking' %}">
-            {% csrf_token %}
-            {{ reservation_form|crispy }}
-            <button type="submit" class="btn btn-primary">Book Now</button>
-        </form>
-    </div>
-    <!-- Display form errors here -->
-    {% if reservation_form.errors %}
-    <ul>
-        {% for field in reservation_form %}
-        {% for error in field.errors %}
-        <li>{{ field.label }}: {{ error }}</li>
-        {% endfor %}
-        {% endfor %}
-    </ul>
-    {% endif %}
-</section>
-<section>
-    <h2>View Bookings</h2>
-    <a href="{% url 'bookings_list' %}" class="btn btn-primary">View Bookings List</a>
-</section>
+<div class="form-container">
+    <h2 class="my-3">Book a Table</h2>
+    <p>
+        Reserve your table at My Hungarian Restaurant by filling out the form below.
+    </p>
+    <section>
+        <h2 class="my-3">Book Your Table</h2>
+        <div class="form-container">
+            <form method="post" action="{% url 'create_booking' %}">
+                {% csrf_token %}
+                {{ reservation_form|crispy }}
+                <button type="submit" class="btn btn-primary">Book Now</button>
+            </form>
+        </div>
+        <!-- Display form errors here -->
+        {% if reservation_form.errors %}
+        <ul>
+            {% for field in reservation_form %}
+            {% for error in field.errors %}
+            <li>{{ field.label }}: {{ error }}</li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+    <section>
+        <h2 class="my-3">View Bookings</h2>
+        <a href="{% url 'bookings_list' %}" class="btn btn-primary">View Bookings List</a>
+    </section>
+</div>
 {% endblock %}

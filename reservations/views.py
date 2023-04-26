@@ -138,22 +138,3 @@ def contact(request):
 
 def gallery(request):
     return render(request, 'gallery.html')
-
-
-# def signup(request):
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             Customer.objects.create(
-#                 user=user,
-#                 first_name=form.cleaned_data['first_name'],
-#                 last_name=form.cleaned_data['last_name'],
-#                 email=form.cleaned_data['email'],
-#                 phone=form.cleaned_data['phone']
-#             )
-#             login(request, user)
-#             return redirect('home')  # or any other view you want to redirect to after successful registration
-#     else:
-#         form = CustomUserCreationForm()
-#     return render(request, 'signup.html', {'form': form})

@@ -2,31 +2,32 @@
 
 {% load i18n %}
 {% load account socialaccount %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
 
-<div class="container">
+<div class="form-container">
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
       <h3>{% trans "Sign In" %}</h3>
 
       <p>{% blocktrans %}Welcome to My Hungarian Restaurant. Please log in to view, edit or delete your bookings. If
         you
-        have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
-        first.{% endblocktrans %}</p>
+        have not created an account yet, then please sign up. {% endblocktrans %}</p>
+      <a href="{{ signup_url }}" class="btn btn-primary">{% trans "Sign Up" %} &raquo;</a>
     </div>
   </div>
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button class="btn-primary" type="submit">{% trans "Sign In" %}</button>
+        <button class="btn btn-primary" type="submit">{% trans "Sign In" %} &raquo;</button>
       </form>
     </div>
   </div>

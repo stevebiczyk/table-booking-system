@@ -29,14 +29,23 @@ class ReservationForm(forms.ModelForm):
             attrs={'type': 'time', 'step': '1800'}, format='%H:%M')
     )
     table = forms.ModelChoiceField(queryset=Table.objects.all(), required=True)
-    # Limiting number of guests to 25 people
-    number_of_guests = forms.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(25)]
-    )
+    number_of_guests = forms.IntegerField()
 
     class Meta:
         model = Reservation
         fields = ['date', 'time', 'number_of_guests', 'special_requests']
+
+        # Validate the number_of_guests field
+    def clean_number_of_guests(self):
+        number_of_guests = self.cleaned_data.get('number_of_guests')
+
+        if number_of_guests is not None:
+            if number_of_guests < 1 or number_of_guests > 25:
+                raise ValidationError(
+                    "The number of guests must be between 1 and 25."
+                )
+
+        return number_of_guests
 
     def __init__(self, *args, **kwargs):
         super(ReservationForm, self).__init__(*args, **kwargs)

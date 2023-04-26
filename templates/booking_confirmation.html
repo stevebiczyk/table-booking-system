@@ -1,18 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Booking Confirmation</h1>
-<p>Thank you for your reservation! Here are the details:</p>
-<ul>
-    <li>Booking ID: {{ reservation.id }}</li>
-    <li>Customer: {{ reservation.customer.first_name }} {{ reservation.customer.last_name }}</li>
-    <li>Email: {{ reservation.customer.email }}</li>
-    <li>Phone: {{ reservation.customer.phone }}</li>
-    <li>Table Number: {{ reservation.table.table_number }}</li>
-    <li>Date: {{ reservation.date }}</li>
-    <li>Time: {{ reservation.time }}</li>
-    <li>Number of Guests: {{ reservation.number_of_guests }}</li>
-    <li>Special Requests: {{ reservation.special_requests }}</li>
-</ul>
-<a href="{% url 'bookings_list' %}" class="btn btn-primary">View Bookings</a>
+<div class="container">
+    <h1 class="my-3">Booking Confirmation</h1>
+    <p>Thank you for your reservation! Here are the details:</p>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Booking ID</th>
+                <td>{{ reservation.id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Customer</th>
+                <td>{{ reservation.user.first_name }} {{ reservation.user.last_name }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Email</th>
+                <td>{{ reservation.user.email }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Table Number</th>
+                <td>{{ reservation.table.table_number }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Date</th>
+                <td>{{ reservation.date }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Time</th>
+                <td>{{ reservation.time }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Number of Guests</th>
+                <td>{{ reservation.number_of_guests }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Special Requests</th>
+                <td>{{ reservation.special_requests }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{% url 'bookings_list' %}" class="btn btn-primary">View Bookings</a>
+</div>
 {% endblock %}
