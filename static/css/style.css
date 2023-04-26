@@ -135,6 +135,66 @@ body {
     color: #fff;
 }
 
+/* .menu-item-header {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.menu-food-item {
+    border-bottom: 1px dotted #ccc;
+    float: left;
+    width: 100%;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.menu-food-item .text {
+    width: calc(100%);
+}
+
+@media (min-width: 768px) {
+    .menu-food-item .text {
+        width: calc(100% - 70px);
+    }
+}
+
+.menu-food-item .price {
+    text-align: left;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .menu-food-item .price {
+        width: 70px;
+        text-align: right;
+    }
+}
+
+.menu-food-item .price strong {
+    color: #fdb44b;
+    font-size: 20px;
+}
+
+.menu-food-item h3 {
+    font-size: 22px;
+}
+
+.menu-food-item h3 a {
+    color: #000;
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+.menu-food-item h3 a:hover {
+    color: gray;
+}
+
+.menu-food-item p:last-child {
+    margin-bottom: 0;
+} */
+
 
 /* Featured dish */
 .featured-dish {
