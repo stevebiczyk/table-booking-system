@@ -58,7 +58,6 @@ def update_booking(request, pk):
         messages.error(
             request, 'You do not have permission to edit this booking')
         return redirect('bookings_list')
-        # raise PermissionDenied
 
     if request.method == "POST":
         form = ReservationForm(request.POST, instance=reservation)
@@ -79,7 +78,6 @@ def delete_booking(request, pk):
         messages.error(
             request, 'You do not have permission to delete this booking')
         return redirect('bookings_list')
-        # raise PermissionDenied
 
     if request.method == 'POST':
         reservation.delete()
