@@ -8,7 +8,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Booking ID</th>
-                    <th scope="col">Username</th>
+                    <th scope="col">Customer Name</th>
                     <th scope="col">Table No.</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
@@ -20,7 +20,14 @@
                 {% for reservation in reservations %}
                 <tr>
                     <th scope="row">{{ reservation.id }}</th>
-                    <td>{{ reservation.user.username }}</td>
+                    <td>
+                        {% if user == reservation.user or user.is_staff %}
+                        {{ reservation.user.first_name }} {{ reservation.user.last_name }}
+                        {% else %}
+                        Hidden
+                        {% endif %}
+                    </td>
+                    <!-- <td>{{ reservation.user.username }}</td> -->
                     <td>{{ reservation.table }}</td>
                     <td>{{ reservation.date }}</td>
                     <td>{{ reservation.time }}</td>
