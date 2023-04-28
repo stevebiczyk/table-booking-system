@@ -67,10 +67,10 @@ The live game can be found here : <a href = "https://table-booking-system-sb.her
 - Plan a private event based on the information on the options, pricing, and process to book the venue.
 
 ### Business Goals (Site Owner's Goals)
-- Provide customers with a secure and safe ecommerce shop
-- Establish the shop's brand image
-- Expand their business effectively
-- Make profit from selling products / services
+- Increase online table reservations
+- Improve Brand Awareness
+- Promote Specials and Events
+- Expand Customer Base
 
 <div><a href="#table-of-contents">Back to top</a></div>
 
