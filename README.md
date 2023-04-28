@@ -55,16 +55,16 @@ The live game can be found here : <a href = "https://table-booking-system-sb.her
 # UX
 ## Project Goals
 ### Target Audience
-- People who are looking to buy flowers / bouquets
-- People who love flowers/botanies
-- People who seek for presents for special occasions such as birthdays
-- People who want to try to make a flower arrangement and decoration by themselves
-- People who want to read interesting blog articles about flowers / botanies / gardening
+- People who are looking for authentic Hungarian dining experience.
+- People who are looking for a unique venue for a birthday party.
+- People who seek experiences such as wine tasting.
 
 ### Visitor / User Goals
-- Purchase products in a smooth and secure way
-- Get informed with the products before buying by product reviews / product information
-- Gain interesting knowledge about flowers from blog articles and leave a comment on blog articles
+- Find information about the restaurant such as its location, hours of operation, and contact information.
+- View the menu and see pictures, prices and possibly ingredients.
+- Make a reservation in a simple and user-friendly way. See the availability of tables at certain times.
+- Read reviews or testimonials from previous visitors.
+- Plan a private event based on the information on the options, pricing, and process to book the venue.
 
 ### Business Goals (Site Owner's Goals)
 - Provide customers with a secure and safe ecommerce shop
