@@ -1,47 +1,57 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}About - My Hungarian Restaurant{% endblock %}
+{% block title %}About - Budapest Gourmet{% endblock %}
 
 {% block content %}
-<h2>About Us</h2>
-<p>
-    My Hungarian Restaurant is a family-owned business established in 2023. We offer a wide range of traditional
-    Hungarian dishes, prepared with love and care. Our mission is to provide our customers with an unforgettable dining
-    experience. Join
-    us for lunch or dinner and experience our exquisite dishes and impeccable service.
-</p>
-<section>
-    <h2>Welcome to My Restaurant</h2>
-    <p>
-        We specialize in Hungarian cuisine, providing a cozy atmosphere for a memorable dining experience. Join
-        us for lunch or dinner and experience our exquisite dishes and impeccable service.
+<div class="container text-center">
+    <h2>About Us</h2>
+    <p class="lead">
+        My Hungarian Restaurant is a family-owned business established in 2023. We offer a wide range of traditional
+        Hungarian dishes, prepared with love and care. Our mission is to provide our customers with an unforgettable
+        dining
+        experience. Join us for lunch or dinner and experience our exquisite dishes and impeccable service.
     </p>
-    <img src="static/img/restaurant_interior.jpg" alt="Restaurant Interior">
-</section>
+    <section>
+        <h2>Welcome to Our Restaurant</h2>
+        <p class="lead">
+            We specialize in authentic Hungarian cuisine, providing a cozy atmosphere for a memorable dining experience.
+            Join us for lunch or dinner and experience our exquisite dishes and impeccable service.
+        </p>
+        <div class="d-flex justify-content-center">
+            <img src="{% static 'images/restaurant-interior.jpg' %}" alt="Restaurant Interior"
+                class="img-fluid rounded">
+        </div>
+    </section>
 
-<section>
-    <h2>Reserve Your Table</h2>
-    <p>
-        Booking a table has never been easier. Simply select your preferred date, time, and the number of
-        guests, and we'll take care of the rest. We look forward to welcoming you soon!
-    </p>
-    <a href="/booking/create/" class="btn btn-primary">Book a Table</a>
-</section>
+    <section class="my-5">
+        <h2>Reserve Your Table</h2>
+        <p class="lead">
+            Booking a table has never been easier. Simply select your preferred date, time, and the number of
+            guests, and we'll take care of the rest. We look forward to welcoming you soon!
+        </p>
+        <a href="/booking/create/" class="btn btn-primary">Book a Table</a>
+    </section>
 
-<section>
-    <h2>Opening Times</h2>
-    <p>
-        We are open daily from 9:00 to 22:00. The time of the last available reservation is 21:00. We look forward to
-        seeing you at our restaurant and serving you our delicious Hungarian dishes!
-    </p>
-</section>
-<section>
-    <h2>Where to Find Us</h2>
-    <p>
-        Our restaurant is conveniently located at [restaurant's address?]. You can find us on the map below:
-    </p>
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509602!2d144.96305771532114!3d-37.81410797975187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e33!2sMelbourne%20Victoria%203000%2C%20Australia!5e0!3m2!1sen!2sus!4v1632875537417!5m2!1sen!2sus"
-        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</section>
+    <section class="my-5">
+        <h2>Opening Times</h2>
+        <p class="lead">
+            We are open daily from 9:00 to 22:00. The time of the last available reservation is 21:00. We look forward
+            to
+            seeing you at our restaurant and serving you our delicious Hungarian dishes!
+        </p>
+    </section>
+    <section class="my-5">
+        <h2>Where to Find Us</h2>
+        <p class="lead">
+            Our restaurant is conveniently located in Budapest. You can find us on the map below:
+        </p>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2691.518013598593!2d19.04035051562708!3d47.4979129801767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc9bdaa99305%3A0x400c4290c1e1160!2sBudapest%2C%20Hungary!5e0!3m2!1sen!2sus!4v1632875537417!5m2!1sen!2sus"
+                class="embed-responsive-item" allowfullscreen="">
+            </iframe>
+        </div>
+    </section>
+</div>
 {% endblock %}

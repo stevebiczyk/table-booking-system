@@ -24,7 +24,7 @@
             id="navbar-main">
             <div class="container-fluid">
                 <img src="{% static 'images/logo.png' %}" alt="Restaurant Logo" class="logo" height="50">
-                <a class="navbar-brand" href="{% url 'index' %}">My Hungarian Restaurant</a>
+                <a class="navbar-brand" href="{% url 'index' %}">Budapest Gourmet</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -74,7 +74,7 @@
     <main>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 p-0">
                     {% block content %}
                     {% endblock %}
                 </div>
@@ -89,7 +89,7 @@
                     <a href="#" class="logo d-flex align-items-center">
                         <span>Budapest Gourmet</span>
                     </a>
-                    <p>Find us on social media.</p>
+                    <p class="section-content">Find us on social media.</p>
                     <div class="social-links d-flex justify-content-center mt-4">
                         <a href="#" class="twitter mx-2"><i class="bi bi-twitter"></i></a>
                         <a href="#" class="facebook mx-2"><i class="bi bi-facebook"></i></a>
