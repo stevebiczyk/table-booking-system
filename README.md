@@ -78,29 +78,44 @@ The live game can be found here : <a href = "https://table-booking-system-sb.her
 
 - Viewing and Navigation
 
+- As Site User I want to see the restaurant's operating hours, menu, and contact information, so I can make an informed decision before booking a table.
+
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... |
 | ----------- | ----------- | ----------- |
-| Site User | |
-| Site User |  |  
-| Site User |  |
-| Site User |  |
-
-
+| Site User | access the website on any device | Use the website anytime and anywhere |
+| Site User | Easily see what services are offered | Find the service I want to use |  
+| Site User | All the important services are accesible from nav bar| Don't need to scroll to find important information |
+| Site User | Have a Book now icon on the nav bar | Quickly and easily make a booking |
 
 <br/>
 
 - Registration and User Accounts
 
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... |
+| ----------- | ----------- | ----------- |
+| Site User | Easily and quickly sign up/ sign in | Access the registered user features |
+| Site User | Save user information |  Log in quicker next time |
+| Site User | Secure my information with a password | Other users can't access my account |
+| Site User | Reset forgotten login information | Recover access to my account |
 
 
 <br/>
 
-- Booking a table
+- Making a booking
 
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... |
 | ----------- | ----------- | ----------- |
-
+| Site User | Select a time and date for my booking | The table is available when I arrive |
+| Site User | Specify the number of guests | The staff can prepare |
+| Site User | Add special requests/ notes to my booking | The staff can prepare |
+| Site User | Receive a comfirmation of my booking | I know the booking is made |
+| Site User | Modifiy or cancel my booking | Make changes when necessary |
+| Site User | View other bookings | Know when the reataurant is busy or quiet |
+| Site User | Leave feedback and ratings | Staff can improve service and potential customers can make informed decisions |
+| Site Admin/ Staff | View and manage all bookings | Know when the restaurant is busy or quiet |
+| Site Admin/ Staff | View customer details | Provide a personalised service |
+| Site Admin/ Staff | Monitor table avaliability | Accomodate customers without a booking |
+| Site Admin/ Staff | Receive notifications of new/amended bookings | Monitor changes without constantly checking for new bookings |
 
 <br/>
 
@@ -113,8 +128,9 @@ Wireframes were created with...
 You can find the wireframes...
 
 ### Brand Identity
-- Vision: 
-- Mission: 
+- Vision: To be recognised as a great destination for authentic Hungarian cuisine.
+- Mission: To deliver an outstanding dining experience by serving high-quality, traditional Hungarian dishes made from the finest local ingredients, and by providing exceptional service in a warm and welcoming environment.
+- Values: Authenticity: Staying true to the traditional recipes. Hospitality: Creating a warm, welcoming environment. Sustainability: Use local suppliers wherever possible.
 
 ### Color Scheme
 
@@ -122,8 +138,8 @@ You can find the wireframes...
 ### Typography
 
 
-- Icon: [FontAwesome](https://fontawesome.com/) is used for the main icon library accross the site.
-- Favicon: I got the favicon by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/).
+- Icons: [Bootstrap Icons](https://icons.getbootstrap.com/) were used accross the site.
+- Favicon: The favicon was sourced from [www.flaticon.com](https://www.flaticon.com/).
 
 
 # Features
@@ -135,7 +151,7 @@ This website is composed of a single application:
 Landing Page is designed as a single page website 
 
 ### Navbar
-Navbar is fixed at the top of pages across the site, so that the site visitors easily navigate the whole site.  Navbar contains  
+Navbar is fixed at the top of pages across the site to help with navigating the site. The navbar contains  
 - Site Menu & My Account dropdown: The site menu collapses to toggle icon less than 992px width. My Account dropdown is included to toggle menu for smaller screen.
 - Cart icon: The number next to the cart icon shows the total of items added to the cart.
 
