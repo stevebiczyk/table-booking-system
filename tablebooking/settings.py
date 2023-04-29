@@ -45,7 +45,7 @@ ACCOUNT_FORMS = {
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-stevebiczyk-tablebookin-jcvyspcnkd6.ws-eu95.gitpod.io/*']
+    'https://8000-stevebiczyk-tablebookin-jcvyspcnkd6.ws-eu96.gitpod.io/*']
 
 # Application definition
 
