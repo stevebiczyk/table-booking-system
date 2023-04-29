@@ -80,6 +80,11 @@ The live game can be found here : <a href = "https://table-booking-system-sb.her
 
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... |
 | ----------- | ----------- | ----------- |
+| Site User | |
+| Site User |  |  
+| Site User |  |
+| Site User |  |
+
 
 
 <br/>
