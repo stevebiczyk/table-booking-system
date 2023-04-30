@@ -1,13 +1,28 @@
-# PROJECT 4 - Budapest Gourmet
+# CODE INSTITUTE PROJECT 4 - Budapest Gourmet
 
 ## Overview
 
-My chosen project was to create a Battleships game that can be played inside the Python Terminal window.
-The game was created using the Code Institute's Python Essentials Template and deployed on Heroku, displayed in a browser-based terminal window.
+My chosen project was to create a website for a small restaurant. This is a fully functional website including all the basic features a small restaurant business would need, however the project has lot of scope for additional features.
+The website includes a section only available to registered user, this is where bookings can be created, viewed, edited or deleted.
 
-![Image of deployed project from Am I responsive](./readme_files/responsive.png)
+User credentials to access this section are:
 
-The live game can be found here : <a href = "https://table-booking-system-sb.herokuapp.com//">Budapest Gourmet</a>
+- Admin user:
+
+Username: admin
+Password: Beechfern22
+
+- Registered user:
+
+Username: istvanbiczyk
+Password: tablebooking2
+
+
+
+![Image of deployed project on tablet device](./readme_files/responsive-tablet.jpg)
+![Image of deployed project on mobile device](./readme_files/responsive-phone.jpg)
+
+The deployed website can be found here : <a href = "https://table-booking-system-sb.herokuapp.com/">Budapest Gourmet</a>
 
 #  
 ## Table of Contents
@@ -256,15 +271,30 @@ This page contains the Sign In form, again styled using Crispy Forms. It contain
 
 <div align="center"><img src = "https://github.com/signin.jpg" width=700></div>
 
-## Book a Table Page
+## Booking Pages
 
-This page can be acessed by clicking the Book a Table button, located in the Navbar. Another similar button can found o the About page. For the purpose of the project only registered site users can make a booking after signing in.
-The table contains the Booking form. This is a bespoke form created for the purpose of the project.
-It has fields for selecting the date and time of the booking, the number of guests and one of the 5 tables. Data validation is included for every input field.
+These pages are only accessible to registered users and only after logging in first.
+
+Login credentials can be found in the Overview section of the Readme but are also included here:
+
+- Admin user:
+
+Username: admin
+Password: Beechfern22
+
+- Registered user:
+
+Username: istvanbiczyk
+Password: tablebooking2
+
+
+- The page can be acessed by clicking the Book a Table button, located in the Navbar. Another similar button can found o the About page. For the purpose of the project only registered site users can make a booking after signing in.The table contains the Booking form. This is a bespoke form created for the purpose of the project.
+It has fields for selecting the date and time of the booking, the number of guests and one of the 5 tables. Custom data validation is included for every input field.
+The booking processs and associated views are protected by the `@login_required` decorator to stop users from accessing these pages without logging in, by typing in the relevant URL-s. If a site visitor attempts to do this they are the redirected to the Login page.
 
 <div align="center"><img src = "https://github.com/booking-form.jpg" width=700></div>
 
-The user can not make a booking for the past or for a time outside the opening hours. The number of guests can't be less than 1 or greater than 25 which is considered to be the full capacity of the restaurant. Bookings can be made for 30 minute intervals and it's not possible to make two bookings for the same table at the same time.
+- The user can not make a booking for the past or for a time outside the opening hours. The number of guests can't be less than 1 or greater than 25 which is considered to be the full capacity of the restaurant. Bookings can be made for 30 minute intervals and it's not possible to make two bookings for the same table at the same time.
 Special requests can be used to warn about allergies and dietary or any other needs.
 There is a button beneath the form for submitting the information. Entering invalid data results in warning messages appearing and pointing out the error to the user and prompting them to correct the relevant details. Upon entering and submitting valid data the user is redirected to the Booking Confirmation page where they can check if they entered the correct details.
 
@@ -287,47 +317,65 @@ The Bookings List page looks slightly different when viewed by the Admin User. T
 
 <div align="center"><img src = "https://github.com/admin-bookings-list.jpg" width=700></div>
 
-## Page
-### Page
-
 
 ## Admin/ Staff Management
 
+The database contains the option of adding further staff members but this featureisn't yet fully implemented. Currently Staff members can only be added throught the Django Admin dashboard.
 
-## Django-allauth features
-Base template for allauth has `Back to Home` button at the end of the page, for easy navigation for users.
-- Sign Up: The users will be asked to fill out `E-mail`, `User Name` and `Password` to create an account. When the sign up form is submitted, a verification email will be sent to the user's email address to complete the sign up process.
-- Log In: Users will be asked to input `User Name` or `Email`, and `Password` to login. If the user successfully logged in, a success message will pop up and redirect to the landing page.
-- Log out: Log out page is accessible from the site menu. After the user successfully signed out button on the sign out page, a success message will appear and redirect to the landing page.
-- Forgot password: Forgot password page is accessible from Sign In page. Users will be asked to put in an email address which they have used for their registration to the site. An email with a link to reset the password will be sent after submitting the form.
+## Django-allauth user authentication
+
+The django-allauth package is used to handle user authentication. This also includes form validation with customised error and success messages. Error messages are highlighted in red and success messages are highlighted in green. Currently the following pages are used in the application:
+
+- Sign Up: This form normally asks the users to fill out the following fields to create an account: `E-mail`, `User Name` and `Password`. However I added two more fields for the user's `First Name`and `Last Name`. The name is used to provide a more personalised user experience throughout the booking handling process.
+
+<div align="center"><img src = "https://github.com/signup.jpg" width=700></div>
+
+- Log In: Users will be asked to input `User Name` and `Password` to login. If the user is successfully logged in they are redirected to the landing page. Only logged in users are able to access the booking form and associated features.
+
+<div align="center"><img src = "https://github.com/signin.jpg" width=700></div>
+
+- Log out: The Log out page is accessible from the site menu. The user is prompted to confirm their intention to sign out. After successfully signing out the user is redirected to the landing page. A success message is also shown on the Bookings List page.
+
+<div align="center"><img src = "https://github.com/signout.jpg" width=700></div>
 
 <div><a href="#table-of-contents">Back to top</a></div>
 
 ## Features Left to Implement
-There are some of features left to implement in the future which I could not add to the project this time due to time constraints. These features are great to be added for a more complete online shop service which would lead to higher customer satisfaction.
-### 1.
-At the moment, all the authenticated users can leave reviews to any products if they are logged in. It should be limited to those who actually purchased the product for the validity of the reviews.
-### 2. 
-This function would be very helpful when there are many products in results. This was not implemented this time due to the time constraints and there are not that many products used in this project.
-### 3. 
 
+There are some of features left to implement in the future which I could not add to the project this time due to time constraints. These features can be added later for a more complete user experience.
+
+### 1.
+The ability for the Admin user to add further users with Staff priviliges which would give them similar level of access to the booking process as the Admin user but without access to the Django Admin dashboard.
+
+### 2. 
+The option for the user to reset a forgotten password. Currently this is not possible and the user has to register a new account.
+
+### 3. 
+The option for the user to leave feedback and reviews. This should be restricted to registered user, ideally after completing a booking.
+
+### 4.
+The ability to offer a takeaway service and take online payments. However, this service can also be provided by a third party.
+
+### 5.
+A blog could also be implemented on the website to further promote the restaurant and the services offered.
 
 ## Defensive Design
-### Error views 
+
+### Error messages
+- A mixture of built in and custom error messages are used throughout the booking process.
 
 ### Form Validation
-- Django Form Validation
+- Django Form Validation is included with the forms contained within the django-allauth package
 
 ### Booking Form Validation
-
+- Custom form validation is added that stops the user from making a booking that's in the past or outside opening hours. There is also validation for guest numbers to stop the user from selecting a number less than 1 or greater than 25 which is the capacity of the restaurant.
 
 # Information Architecture
+
 ## Database choice
-- Development phase
+- SQLite3 for development.
 
-
-- Deployment phase
-
+- [ElephantSQL](https://www.elephantsql.com/) database used for development and deployment.
 
 ## Data Modeling
 
@@ -341,69 +389,229 @@ The main frontend development was created using HTML, CSS, JavaScript and their 
 ## Languages
 - HTML, CSS, JavaScript, Python
 
+## Frameworks
+- [Django](https://www.djangoproject.com/) - Version 3.2.16 - A high-level Python web framework.
+
+- [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/) - Version 4.5.2 - A framework for building responsive, mobile-first sites.
+
 ## Libraries and Packages
 - [Django](https://www.djangoproject.com/)
 - [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
 - [Django Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html)
+- [jQuery](https://jquery.com/) - Version 3.5.1 - A JavaScript Framework
+- [psycopg2](https://pypi.org/project/psycopg2/) - A PostgreSQL database adapter for Python
+- [gunicorn](https://pypi.org/project/gunicorn/) - a Python WSGI HTTP Server
 - [Bootstrap (v4.5.1)](https://www.bootstrapcdn.com/)
 - [JQuery](https://jquery.com/)
 - [Font Awesome](https://fontawesome.com/)
 - [Google Fonts](https://fonts.google.com/)
 
 ## Tools
-- Git/GitHub
-- Gitpod
+- [Git](https://git-scm.com/) - For version control.
+- [GitHub](https://github.com/) - To save and store the files for this project.
+- [Gitpod](https://www.gitpod.io/) - Online code editor.
 - [PIP](https://pip.pypa.io/en/stable/installing/)
 
 ## Databases
 - [PostgreSQL](https://www.postgresql.org/) - database used for development.
 - [ElephantSQL](https://www.elephantsql.com)- database used for deployment.
 
-# Testing
-
 
 <div><a href="#table-of-contents">Back to top</a></div>
 
-# Deployment
-## Heroku Deployment 
+# Development and Deployment
 
- 
-### Automatic Deploy on Heroku
-You can enable automatic deploy in the following steps that pushes update to Heroku everytime you push to github.
-1. Go to Deploy in Heroku dashboard.
-2. At `Automatic deploys`, choose a github repository you want to deploy.
-3. Click `Enable Automatic Deploys`.
+## Deployment 
+The project is deployed using Heroku. The steps required to deploy the project are described below:
 
+#### Creating the Live Database
 
-## Local Deployment
-For local deployment, you need to have an IDE (I used Gitpod for this project) and you need to install the following:
-- Git, Python3, PIP3
+- SQLite 3 is used for development but for deployment a new external database which can be accessed by Heroku.
 
+1. Go to the [ElephantSQL](https://www.elephantsql.com/) dashboard and click the create new instance button on the top right.
+2. Name the plan (your project name is a good choice), select tiny turtle plan (this is the free plan) and choose the region that is closest to you then click the review button.
+3. Check the details are all correct and then click create instance on the bottom right.
+4. Go to the dashboard and select the database just created.
+5. Copy the URL (you can click the clipboard icon to copy)
 
-2. Set up environment variable in your selected IDE, or you can create `.env` file in your root directory and add `.env` to `.gitignore` file, and add the followings to the `.env` file.
-```
-    
-```
-3. Install all the required packages with `pip3 install -r requirements.txt`
-4. Migrate the models to crete a database using in your IDE with `python3 manage.py makemigrations` and `python3 manage.py migrate`
+### Heroku App Setup
 
-6. Create a superuser for the Postgres database by running with `python3 manage.py createsuperuser`
-7. Now you can access the app using the command `python3 manage.py runserver`
+  1. From the [Heroku dashboard](https://dashboard.heroku.com/), click the new button in the top right corner and select create new app.
+  2. Give your app a name (this must be unique), select the region that is closest to you and then click the create app button bottom left.
+  3. Open the settings tab and create a new config var of `DATABASE_URL` and paste the database URL you copied from elephantSQL into the value (the value should not have quotation marks around it).
 
-<div><a href="#table-of-contents">Back to top</a></div>
+### Gitpod Setup
 
-# Credits
+1. Install dj_database_url and psycopg2 (they are both needed for connecting to the external database you've just set up):
+
+   ```bash
+   pip3 install dj_database_url==0.5.0 psycopg2
+   ```
+
+2. Update your requirements.txt file with the packages just installed:
+
+    ```bash
+    pip3 freeze > requirements.txt
+    ```
+
+3. In settings.py underneath import os, add `import dj_database_url`
+
+4. Find the section for DATABASES and comment out the code. Add the following code below the commented out database block, and use the URL copied from elephantSQL for the value:
+
+    (NOTE! don't delete the original section, as this is a temporary step whilst we connect the external database. Make sure you don't push this value to GitHub - this value should not be saved to GitHub, it will be added to the Heroku config vars in a later step, this is temporary to allow us to migrate our models to the external database)
+
+    ```python
+    DATABASES = {
+        'default': dj_database_url.parse('paste-elephantsql-db-url-here')
+    }
+    ```
+
+5. In the terminal, run the show migrations command to confirm connection to the external database:
+
+    ```bash
+    python3 manage.py runserver
+    ```
+
+6. If you have connected the database correctly you will see a list of migrations that are unchecked. You can now run migrations to migrate the models to the new database:
+
+    ```bash
+    python3 manage.py migrate
+    ```
+
+7. Create a superuser for the new database. Input a username, email and password when directed.
+
+    ```bash
+    python3 manage.py createsuperuser
+    ```
+
+8. You should now be able to go to the browser tab on the left of the page in elephantsql, click the table queries button and see the user you've just created by selecting the auth_user table.
+9. We can now add an if/else statement for the databases in settings.py, so we use the development database while in development (the code we commented out) - and the external database on the live site (note the change where the db URL was is now a variable we will use in Heroku):
+
+    ```python
+    if 'DATABASE_URL' in os.environ:
+        DATABASES = {
+          'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        }
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+          }
+        }
+    ```
+
+10. Install gunicorn which will act as our webserver and freeze this to the requirements.txt file:
+
+    ```bash
+    pip3 install gunicorn
+    pip3 freeze > requirements.txt
+    ```
+
+11. Create a `Procfile` in the root directory. This tells Heroku to create a web dyno which runs gunicorn and serves our django app. Add the following to the file (making sure not to leave any blank lines underneath):
+
+    ```Procfile
+    web: gunicorn seaside_sewing.wsgi:application
+    ```
+
+12. Log into the Heroku CLI in the terminal and then run the following command to disable collectstatic. This command tells Heroku not to collect static files when we deploy:
+
+    ```bash
+    heroku config:set DISABLE_COLLECTSTATIC=1 --app heroku-app-name-here
+    ```
+
+13. We will also need to add the Heroku app and localhost (which will allow GitPod to still work) to ALLOWED_HOSTS = [] in settings.py:
+
+    ```python
+    ALLOWED_HOSTS = ['{heroku deployed site URL here}', 'localhost' ]
+    ```
+
+14. Save, add, commit and push the changes to GitHub. You can then also initialize the Heroku git remote in the terminal and push to Heroku with:
+
+    ```bash
+    heroku git:remote -a {app name here}
+    git push heroku master
+    ```
+
+15. You should now be able to see the deployed site (without any static files as we haven't set these up yet).
+
+16. To enable automatic deploys on Heroku, go to the deploy tab and click the connect to GitHub button in the deployment method section. Search for the projects repository and then click connect. Click `Enable Automatic Deploys` at the bottom of the page.
+
+#### Generating a SECRET KEY and setting Debug
+
+1. Django automatically sets a secret key when you create your project, however we shouldn't use this default key in our deployed version, as it leaves our site vulnerable. We can use a random key generator to create a new SECRET_KEY which we can then add to our Heroku config vars which will then keep the key protected.
+2. [Django Secret Key Generator](https://miniwebtool.com/django-secret-key-generator/) is an example of a site we could use to create our secret key. Create a new key and copy the value.
+3. In Heroku settings create a new config var with a key of `SECRET_KEY`. The value will be the secret key we just created. Click add.
+4. In settings.py we can now update the `SECRET_KEY` variable, asking it to get the secret key from the environment, or use an empty string in development:
+
+    ```python
+    SECRET_KEY = os.environ.get('SECRET_KEY', ' ')
+    ```
+
+5. We can now adjust the `DEBUG` variable to only set DEBUG as true if in development:
+
+    ```python
+    DEBUG = 'DEVELOPMENT' in os.environ
+    ```
+
+6. Save, add, commit and push these changes.
+
+#### Connecting to Cloudinary
+
+- [Cloudinary](https://cloudinary.com/) is used for storing static files and images.
+
+1. In settings.py add the following lines to INSTALLED APPS: 'cloudinary_storage', 'cloudinary',
+2. Then add the following lines: STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+3. In env.py add the following line: os.environ["CLOUDINARY_URL"] = "your_cloudinary_URL"
+
+4. Add the Cloudinary URL to the Heroku Config Vars.
+
+## Testing
+
+The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+
+-   [W3C Markup Validator](https://validator.w3.org/) 
+-   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) 
+
+These were used to validate the code via direkt input. The code passed without errors
+
+Lighthouse was also used to validate the project for performance, accessability, best practices and SEO.
+
+-   [Lighthouse](https://developers.google.com/web/tools/lighthouse) 
+- [ Results ] <div align="center"><img src = "https://github.com/lighthouse.jpg" width=700></div>
+
+### Further Testing
+
+-   Tested all features on the application to ensure that functionality is fully working.
+-   Tested on Google Chrome and Microsoft Edge.
+-   Viewed on laptop, tablet and mobile device..
+-   Tested all links, buttons and inputs extensively.
+
+### Known Bugs
+
+- There are multiple user messages displayed when first accessing the Bookings List, depending on previous user actions. The messages disappear once the page is refreshed.
+- The images displayed in the Gallery shrink too small when viewed on certain screen sizes.
+
+## Credits
 
 ### Content & Code
-
+- [Django](https://docs.djangoproject.com/en/dev/releases/3.2/), [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) documentation and [Stack Overflow](https://stackoverflow.com/questions) was used throughout the project.
+Small sections of code were adapted and used. All textual content was written by me.
 
 ### Images & Media
-- The icons in this website were provided by [Font Awesome](https://fontawesome.com/).
-
+- Copyright free stock images were used.
 
 ### Acknowledgements
-- Thanks to: my Code Institute Mentor.
-- Code Institute Slack Community.
+- Thanks to: my Code Institute Mentor, Dick Vlaanderen for his guidance and advice.
+- The Tutors for their help.
+- The Code Institute Slack community.
 
 ### Disclaimer
-This website is created for educational purpose only.
+This website is created for educational purposes only.
