@@ -29,9 +29,8 @@ The deployed website can be found here : <a href = "https://table-booking-system
 
 1. [UX](#ux)
     - [Project Goals](#project-goals)
-    - [User Goals](#User-goals)
     - [User Stories](#user-stories)
-    - [Design Choices](#design-choices)
+    - [Design](#design)
 
 2. [Features](#features)
     - [Existing Features](#existing-features)
@@ -42,8 +41,8 @@ The deployed website can be found here : <a href = "https://table-booking-system
         - [Register Page](#register-page)
         - [Login Page](#login-page)
         - [Booking Page](#login-page)
-        - [Admin Product Managment](#admin-product-managment)
-        - [Django allauth features](#django-allauth-features)
+        - [Admin/ Staff Management](#admin-staff-managment)
+        - [Django allauth authentication](#django-allauth-authentication)
     - [Features Left to Implement](#features-left-to-implement)
     - [Defensive Design](#defensive-design)
 
@@ -57,15 +56,15 @@ The deployed website can be found here : <a href = "https://table-booking-system
     - [Tools](#tools)
     - [Databases](#databases)
 
-5. [Testing](#testing)
+5. [Deployment](#deployment)
 
-6. [Deployment](#deployment)
-    - [Local Deployment](#local-deployment)
-    - [Remote Deployment to Heroku ](#remote-deployment)
+6. [Testing](#testing)
 
 7. [Credits](#credits)
 
 8. [Disclaimer](#disclaimer)
+
+
 
 # UX
 ## Project Goals
@@ -179,17 +178,19 @@ The Landing Page is designed as a single page website
 The Navbar is fixed at the top of pages across the site to help with navigating the site. The navbar contains: 
 - Brand Logo, Site Menu, Account Menu and Book a Table button. The menu collapses to toggle icon less than 992px width.
 
-<div align="center"><img src = "https://github.com/jpg" width=700></div>
+![Image of the large Navbar](./readme_files/navbar-full.jpg)
 
 Navbar for larger screensizes (width > 992px)
 
+![Image of the large Navbar](./readme_files/navbar-large.jpg)
+
 Navbar for smaller screensizes (width < 992px)
 
-<div align="center"><img src = "https://github.com/jpg" width=700></div>
+![Image of the complete Navbar](./readme_files/navbar-tablet.jpg)
 
-Navbar for authenticated users
+Navbar for logged in users
 
-<div align="center"><img src = "https://github.com/jpg" width=700></div>
+![Image of the complete Navbar](./readme_files/navbar-logged-in.jpg)
 
 
 ### Hero Image and Hero Text
@@ -200,24 +201,24 @@ The next feature of the Landing Page is the Hero Image and Hero Text. The image 
 
 A list of main selling points for the restaurant, laid out in a horizontal line.
 
-<div align="center"><img src = "https://github.com/why-us.jpg" width=700></div>
+![Image of Why Us? Section](./readme_files/why-us.jpg)
 
 ### Featured Dish
 
 A picture and the description of the current signature dish, side by side.
 
-<div align="center"><img src = "https://github.com/featured-dish.jpg" width=700></div>
+![Image of Featured Dish section](./readme_files/featured-dish.jpg)
 
 ### Events & News
 
 Pictures and description of any regular events and news about the restaurant.
 
-<div align="center"><img src = "https://github.com/events-news.jpg" width=700></div>
+![Image of Events & News section](./readme_files/events-news.jpg)
 
 ### Footer
 The footer section contains the Social Media icons.I included icons for Twitter, Facebook, Instagram and Pinterest. Currently they take the user back to the homepage but on the deployed website of the actual business they would take the user to the relevant social media pages.
 
-<div align="center"><img src = "https://github.com/footer.jpg" width=700></div>
+![Image of Footer section](./readme_files/footer.jpg)
 
 <div><a href="#table-of-contents">Back to top</a></div>
 
@@ -225,13 +226,13 @@ The footer section contains the Social Media icons.I included icons for Twitter,
 
  Contains the restaurant menu in 3 vertical tables, one for the Starters, Main Courses amd Desserts each.
 
-<div align="center"><img src = "https://github.com/menu.jpg" width=700></div>
+![Image of Menu page](./readme_files/our-menu.jpg)
 
 ## Gallery Page
 
 Contains images of three selected dishes in each of the categories included in the menu.Next to each image there is a card containing the name, a short description and the price of each dish. The images and description cards are arranged in a horizontal, responsive row.
 
-<div align="center"><img src = "https://github.com/gallery.jpg" width=700></div>
+![Image of Gallery page](./readme_files/gallery.jpg)
 
 ## About Page
 
@@ -239,9 +240,9 @@ Divided into the following sections:
 
 - About Us: A brief description of the business and its mission.
 
-- Welcome mssage, also includes an image of the restaurant's interior.
+- Welcome message, also includes an image of the restaurant's interior.
 
-<div align="center"><img src = "https://github.com/about-top.jpg" width=700></div>
+![Image of About page top](./readme_files/about-top.jpg)
 
 - Reserve your table: A brief description of the reservation process and a button taking the customer to the Login or Booking page. 
 
@@ -249,27 +250,27 @@ Divided into the following sections:
 
 - Where to find Us: An embedded section of Google Maps showing the supposed location of the restaurant. This section would also contain the address, phone number, email address and other details of the restaurant but this is a fictional business, invented for the purpose of the project.
 
-<div align="center"><img src = "https://github.com/about-bottom.jpg" width=700></div>
+![Image of About page bottom](./readme_files/about-bottom.jpg)
 
 ## Contact Page
 
 Contains the contact form of the restaurant. The form has fields for the Name, Email, Subject and Message as well as the Submit and Clear Form Buttons.
 The form was styled using Bootstrap and Django Crispy Forms. This is the case with all other forms found on the website.
 
-<div align="center"><img src = "https://github.com/contact.jpg" width=700></div>
+![Image of Contact page](./readme_files/contact.jpg)
 
 ## Register Page
 
 Contains the Sign Up form. The form has 6 fields in the following vertical order. 1 - Username, 2 - Email, 3 - First Name, 4 - Last Name, 5 - Password, 6 - Password (again). This and all other user forms (except for the Booking form) are imported with the Django Allauth package and modified to better fit the needs of the site.
 There are also two buttons, one for signing in for existing users and a submit button for signing up.
 
-<div align="center"><img src = "https://github.com/signup.jpg" width=700></div>
+![Image of Sign Up page](./readme_files/signup.jpg)
 
 ## Login Page
 
 This page contains the Sign In form, again styled using Crispy Forms. It contains two fields, one for the Username and another for the Password. This page also includes a Sign In button for submitting the data and a Sign Up button redirecting the visitor to the Register page. Upon signing in the user is redirected to the Index page.
 
-<div align="center"><img src = "https://github.com/signin.jpg" width=700></div>
+![Image of Sign In page](./readme_files/signin.jpg)
 
 ## Booking Pages
 
@@ -292,30 +293,32 @@ Password: tablebooking2
 It has fields for selecting the date and time of the booking, the number of guests and one of the 5 tables. Custom data validation is included for every input field.
 The booking processs and associated views are protected by the `@login_required` decorator to stop users from accessing these pages without logging in, by typing in the relevant URL-s. If a site visitor attempts to do this they are the redirected to the Login page.
 
-<div align="center"><img src = "https://github.com/booking-form.jpg" width=700></div>
+![Image of Booking page top](./readme_files/book-top.jpg)
+
+![Image of Booking page bottom](./readme_files/book-bottom.jpg)
 
 - The user can not make a booking for the past or for a time outside the opening hours. The number of guests can't be less than 1 or greater than 25 which is considered to be the full capacity of the restaurant. Bookings can be made for 30 minute intervals and it's not possible to make two bookings for the same table at the same time.
 Special requests can be used to warn about allergies and dietary or any other needs.
 There is a button beneath the form for submitting the information. Entering invalid data results in warning messages appearing and pointing out the error to the user and prompting them to correct the relevant details. Upon entering and submitting valid data the user is redirected to the Booking Confirmation page where they can check if they entered the correct details.
 
-<div align="center"><img src = "https://github.com/booking-confirmation.jpg" width=700></div>
+![Image of Booking Confirmation](./readme_files/booking-confirmation.jpg)
 
 From here it's possible to access the booking list, which is also accessible from the booking form page. The bookings list has different views depending on whether the user is a customer or a member of staff (Admin user). The customer can view all the bookings (except for the name of the other customers) but only edit or delete bookings made by themselves. The Admin user can access, edit and delete all the bookings contained within the list.
 
-<div align="center"><img src = "https://github.com/booking-list.jpg" width=700></div>
+![Image of Bookings List](./readme_files/bookings-list.jpg)
 
 Next to each booking in the list there are two buttons, one for editing and one for deleting the relevant booking. These buttons are a requirement for the CRUD functionality which is understandably an essential requirement for the project. The unauthorised user clicking either of these buttons triggers a warning message informing them that they don't have a permission for these actions. However they are free to edit or delete any bookings made by themselves.
 Clicking the Edit button takes the user to the Update Booking page. This page is page is almost identical to the Booking page except for the text making it clear that the user is updating a previous booking rather than making a new one. The contained form also looks identical to the original Booking Form. Upon amending the original booking details shown in the form and clicking the Update Booking button the user is taken back to the Booking Confirmation page.
 
-<div align="center"><img src = "https://github.com/booking-update.jpg" width=700></div>
+![Image of Update Booking](./readme_files/update.jpg)
 
 The other option available to the user on the Bookings List page is to delete one of their bookings. Upon clicking the red Delete button the user is taken to the Delete Reservation page. Here they are given another prompt to confirm that they wish to delete the selected booking or want to return to the Bookings List page. Deleting the selected booking also results in the user being redirected to the Bookings List, which will no longer include the deleted booking.
 
-<div align="center"><img src = "https://github.com/booking-delete.jpg" width=700></div>
+![Image of Delete Booking](./readme_files/booking-delete.jpg)
 
 The Bookings List page looks slightly different when viewed by the Admin User. They can see the names and details of all the customers on the list and edit or delete any booking. This is necessary so that they can make changes if asked by the customers via other ways such as a phone call or in person.
 
-<div align="center"><img src = "https://github.com/admin-bookings-list.jpg" width=700></div>
+![Image of Admin Bookings List ](./readme_files/admin-bookings-list.jpg)
 
 
 ## Admin/ Staff Management
@@ -328,15 +331,15 @@ The django-allauth package is used to handle user authentication. This also incl
 
 - Sign Up: This form normally asks the users to fill out the following fields to create an account: `E-mail`, `User Name` and `Password`. However I added two more fields for the user's `First Name`and `Last Name`. The name is used to provide a more personalised user experience throughout the booking handling process.
 
-<div align="center"><img src = "https://github.com/signup.jpg" width=700></div>
+![Image of Sign Up page](./readme_files/signup.jpg)
 
 - Log In: Users will be asked to input `User Name` and `Password` to login. If the user is successfully logged in they are redirected to the landing page. Only logged in users are able to access the booking form and associated features.
 
-<div align="center"><img src = "https://github.com/signin.jpg" width=700></div>
+![Image of Sign In page](./readme_files/signin.jpg)
 
 - Log out: The Log out page is accessible from the site menu. The user is prompted to confirm their intention to sign out. After successfully signing out the user is redirected to the landing page. A success message is also shown on the Bookings List page.
 
-<div align="center"><img src = "https://github.com/signout.jpg" width=700></div>
+![Image of Sign Out page](./readme_files/signout.jpg)
 
 <div><a href="#table-of-contents">Back to top</a></div>
 
@@ -585,7 +588,8 @@ These were used to validate the code via direkt input. The code passed without e
 Lighthouse was also used to validate the project for performance, accessability, best practices and SEO.
 
 -   [Lighthouse](https://developers.google.com/web/tools/lighthouse) 
-- [ Results ] <div align="center"><img src = "https://github.com/lighthouse.jpg" width=700></div>
+
+![Image of Lighthouse Result](./readme_files/lighthouse.jpg)
 
 ### Further Testing
 
